@@ -11,6 +11,8 @@ struct list_view: View{
     @State var repositry: [String] = []
     //検索窓
     @State var SearchString: String = ""
+    //@FocusState private var isTextFieldFocused: Bool
+    
     //検索フィルタ
     var filteredRepository: [String] {
             if SearchString.isEmpty {
@@ -23,7 +25,6 @@ struct list_view: View{
     
     var body: some View {
         List {
-            
             ForEach(filteredRepository, id: \.self) { repo in
                 Text(repo)
             }

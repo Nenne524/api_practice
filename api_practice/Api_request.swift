@@ -5,7 +5,8 @@ import SwiftUI
 //URLSession.shared.dataTaskが非同期処理だからコールバック関数(?)にしないといけない？(completion)
 //@escapingはクロージャが関数のスコープを超えて保持または使用される場合に使用される属性
 func Api_git(completion: @escaping ([String]?) -> Void){
-    let urlstring: String = "https://api.github.com/users/yamaneami/repos"
+    //let urlstring: String = "https://api.github.com/users/yamaneami/repos"
+    let urlstring: String = "http://localhost:3000/books"
     var rtn_list: [String] = []
     //urlの強制アンラップ防止
     guard let url = URL(string: urlstring) else{
@@ -29,7 +30,8 @@ func Api_git(completion: @escaping ([String]?) -> Void){
                 //print(obj)
                 for repo in obj {
                     // リポジトリ情報にアクセスする
-                    let repositoryName = repo["name"] as? String
+                    //let repositoryName = repo["name"] as? String
+                    let repositoryName = repo["title"] as? String
                     if let repositoryName = repositoryName{
                         // ここでリポジトリ情報を使用する処理を行う
                         //print(repositoryName)

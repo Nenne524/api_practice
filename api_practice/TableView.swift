@@ -15,10 +15,12 @@ struct Search: View {
         NavigationView {
             VStack {
                 NavigationLink(destination: list_view()) {
-                    Text("Search repositry name")
+                    Text("一覧")
+                }
+                NavigationLink(destination: post_view()) {
+                    Text("投稿")
                 }
             }
-        //.navigationTitle("Search")  // ナビゲーションバーのタイトルを設定
         }
     }
 }
