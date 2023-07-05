@@ -9,6 +9,14 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
+struct books: Encodable{
+    //var id: Int?
+    var title: String?
+    var body: String?
+//    var created_at: String?
+//    var updated_at: String?
+}
+
 struct Status: Codable{
     var status: Int
     var massage: String?

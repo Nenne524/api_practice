@@ -10,11 +10,17 @@ import SwiftUI
 struct post_view: View {
     @State var title_in: String = ""
     var body: some View {
-        HStack{
-            TextField("題名を入力", text: $title_in)
-                .padding()
-                .background(Color(.systemGray6))
-                .padding()
+        VStack{
+            HStack{
+                TextField("題名を入力", text: $title_in)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .padding()
+            }
+            Button("投稿"){
+                api_post(title_post: title_in)
+                title_in = ""
+            }
         }
     }
 }
