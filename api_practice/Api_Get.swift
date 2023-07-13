@@ -1,3 +1,10 @@
+//
+//  Api_Get.swift
+//  api_practice
+//
+//  Created by 山根愛実 on 2023/07/07.
+//
+
 import Foundation
 import SwiftUI
 
@@ -69,5 +76,3 @@ func Api_get(completion: @escaping ([books_decode]?) -> Void){
 //    // これ呼ばなきゃリストが更新されません
 //    task.resume()
 //}
-
-

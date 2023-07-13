@@ -17,6 +17,12 @@ final class api_practiceTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func test_testtest() throws{
+        let x = testtest(x: 2)
+        XCTAssertEqual(x,3)
+    }
+    
 
     func testExample() throws {
         // This is an example of a functional test case.

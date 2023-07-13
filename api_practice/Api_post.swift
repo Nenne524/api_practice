@@ -21,12 +21,10 @@ func api_post(title_post: String){
         let jsonEncoder = JSONEncoder()
         let jsonData = try jsonEncoder.encode(post)
         //let jsonstr:String = String(data: jsonData, encoding: .utf8)!
-        //print(jsonstr)
         request.httpBody = jsonData
         request.allHTTPHeaderFields = ["Content-Type": "application/json"]
         
     } catch {
-        print("error")
         return
     }
         
@@ -36,4 +34,8 @@ func api_post(title_post: String){
         }
         //print("response: \(String(describing: response))")
     }.resume()
+}
+
+func testtest(x: Int)->Int{
+    return x+1
 }
