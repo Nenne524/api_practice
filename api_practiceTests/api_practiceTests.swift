@@ -19,8 +19,8 @@ final class api_practiceTests: XCTestCase {
     }
     
     func test_testtest() throws{
-        let x = testtest(x: 2)
-        XCTAssertEqual(x,3)
+        let x = testtest(x: 3)
+        XCTAssertEqual(x,4)
     }
     
 
