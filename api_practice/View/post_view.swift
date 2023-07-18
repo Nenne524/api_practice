@@ -20,7 +20,15 @@ struct POST_View: View {
             Button("投稿"){
                 Server_API_POST(title_post: title_in)
                 title_in = ""
-                Server_API_GET()
+                Task {
+                    do {
+                        try await Server_API_GET()
+                    } catch {
+                        // Handle error
+                        print(error)
+                    }
+                }
+//                await Server_API_GET()
             }
         }
     }

@@ -9,31 +9,23 @@ import Foundation
 import SwiftUI
 import RealmSwift
 
-func Server_API_GET(){
+func Server_API_GET() async throws -> Void{
     let urlstring: String = "http://localhost:3000/books"
     guard let url = URL(string: urlstring) else{
         return
     }
-    let request = URLRequest(url: url)
-    
-    //アクセスしてレスポンスを受け取る
-    URLSession.shared.dataTask(with: request){ data,res,err in
-        guard let data = data else{
-            return
-        }
-        do{
-            let books = try JSONDecoder().decode([books_Decode].self,from: data)
-            Realm_POST_init()
-            Realm_DELETE()
-            Realm_POST(books: books)
-        }catch{
-            print("realm_error")
-            return
-        }
+    let (data, _) = try await URLSession.shared.data(from: url)
+    do{
+        let decoder = JSONDecoder()
+        let books = try decoder.decode([books_Decode].self, from: data)
+        Realm_POST_init()
+        Realm_DELETE()
+        Realm_POST(books: books)
+    }catch{
+        print("realm_error")
+        return
     }
-    .resume()
 }
-
 
 //Realmを通さない版
 //func Api_get(completion: @escaping ([books_decode]?) -> Void){
