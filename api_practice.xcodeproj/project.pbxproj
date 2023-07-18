@@ -122,9 +122,9 @@
 		98967ABF2A60E0CD00028F54 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				987EDAD42A60EC880062D966 /* Home_View.swift */,
 				987EDAD22A60EA920062D966 /* TitleList_View.swift */,
 				987EDAD62A60ECED0062D966 /* POST_View.swift */,
-				987EDAD42A60EC880062D966 /* Home_View.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

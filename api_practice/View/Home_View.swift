@@ -12,9 +12,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: TitleList_View()) {
-                    Text("一覧")
-                }
+                TitleList_View()
                 NavigationLink(destination: POST_View()) {
                     Text("投稿")
                 }

@@ -21,7 +21,9 @@ struct TitleList_View: View{
     var body: some View {
         List {
             ForEach(filteredtitle, id: \.self) { title_name in
-                Text(title_name)
+                    Text(title_name)
+                    .font(.title)
+                    .padding()
             }
         }
         .searchable(text: $SearchString, placement: .navigationBarDrawer(displayMode: .always), prompt: "search keyword")
