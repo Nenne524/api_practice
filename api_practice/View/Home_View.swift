@@ -15,11 +15,12 @@ struct HomeView: View {
                 TitleList_View()
                 POST_Button_View()
             }
-            .navigationBarTitle(Text("美鈴が丘"),displayMode: .inline)
+            .navigationBarTitle(Text("美鈴が丘"))
         }
     }
 }
 
+//"投稿"ボタンの実装
 struct POST_Button_View: View {
     @State private var postButtonShowing: Bool = false
     var body: some View {
@@ -33,15 +34,17 @@ struct POST_Button_View: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.blue, lineWidth: 1)
         )
-        .accessibilityIdentifier("投稿")
         .fullScreenCover(isPresented: $postButtonShowing){
             POST_View(isActive: $postButtonShowing)
         }
+        //テスト練習用
+        .accessibilityIdentifier("投稿")
     }
 }
     
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(TitleList())
     }
 }

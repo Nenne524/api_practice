@@ -12,6 +12,7 @@ struct api_practiceApp: App {
     var body: some Scene {
         WindowGroup {
             HomeView()
+                .environmentObject(TitleList())
         }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct POST_View: View {
     @Binding var isActive: Bool
     @State var title_in: String = ""
-    @State var title: [String] = []
+    @EnvironmentObject var titlelist: TitleList
     
     var body: some View {
         NavigationView{
@@ -24,28 +24,14 @@ struct POST_View: View {
                     Server_API_POST(title_post: title_in)
                     title_in = ""
                     isActive = false
-                    Task{
-                        do{
-                            try await Server_API_GET()
-                            title = Realm_GET()
-                        }catch{
-                            print(error)
-                        }
-                    }
+                    TitleFetch(for: titlelist)
                 }.accessibilityIdentifier("button")
                 
             }
             .navigationBarItems(
                 leading: Button("キャンセル") {
                     isActive = false
-                    Task{
-                        do{
-                            try await Server_API_GET()
-                            title = Realm_GET()
-                        }catch{
-                            print(error)
-                        }
-                    }
+                    TitleFetch(for: titlelist)
                 }
             )
         }
@@ -56,5 +42,6 @@ struct POST_View_Previews: PreviewProvider {
     @State static var isActive = true
     static var previews: some View {
         POST_View(isActive: $isActive)
+            .environmentObject(TitleList())
     }
 }
