@@ -11,11 +11,22 @@ import Foundation
 struct HomeView: View {
     var body: some View {
         NavigationStack{
-            VStack {
+            ZStack{
                 TitleList_View()
-                POST_Button_View()
+                //POST_Button_View()
             }
-            .navigationBarTitle(Text("美鈴が丘"))
+            .toolbar {
+                ToolbarItem(placement: .bottomBar){
+                    POST_Button_View()
+                }
+                ToolbarItem(placement: .navigation) {
+                    Text("美鈴が丘町内会")
+                        .font(.system(size: 30,weight: .thin))
+                }
+            }
+            .toolbarColorScheme(.light)
+            .toolbarBackground(.visible)
+            //.toolbarBackground(Color.customBackgroundColor)
         }
     }
 }
@@ -27,13 +38,15 @@ struct POST_Button_View: View {
         Button(action:{
             self.postButtonShowing.toggle()
         }){
-            Text("投稿")
+//            Text("投稿")
+//                .font(.system(size:30, weight:.thin))
+//                .frame(width: 90, height: 40)
+//                .background(Color.white)
+//                .foregroundColor(.black)
+//                .cornerRadius(10)
+            Image(systemName: "plus")
+                .foregroundColor(.black)
         }
-        .frame(width: 90,height: 50)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.blue, lineWidth: 1)
-        )
         .fullScreenCover(isPresented: $postButtonShowing){
             POST_View(isActive: $postButtonShowing)
         }

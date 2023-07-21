@@ -25,6 +25,9 @@ struct TitleList_View: View{
                 print(error)
             }
         }
+//        .scrollContentBackground(.hidden)
+//        .background(Color.mint)
+        
     }
 }
 
