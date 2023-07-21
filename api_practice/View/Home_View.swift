@@ -10,13 +10,32 @@ import Foundation
 
 struct HomeView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack{
             VStack {
                 TitleList_View()
-                NavigationLink(destination: POST_View()) {
-                    Text("投稿")
-                }
+                POST_Button_View()
             }
+            .navigationBarTitle(Text("美鈴が丘"),displayMode: .inline)
+        }
+    }
+}
+
+struct POST_Button_View: View {
+    @State private var postButtonShowing: Bool = false
+    var body: some View {
+        Button(action:{
+            self.postButtonShowing.toggle()
+        }){
+            Text("投稿")
+        }
+        .frame(width: 90,height: 50)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.blue, lineWidth: 1)
+        )
+        .accessibilityIdentifier("投稿")
+        .fullScreenCover(isPresented: $postButtonShowing){
+            POST_View(isActive: $postButtonShowing)
         }
     }
 }

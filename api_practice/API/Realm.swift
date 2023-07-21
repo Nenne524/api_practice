@@ -19,6 +19,7 @@ func Realm_GET() -> [String]{
         return []
     }
 }
+
 func Realm_POST_init(){
     do{
         let realm = try Realm()

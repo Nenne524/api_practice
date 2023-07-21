@@ -9,26 +9,24 @@ import SwiftUI
 
 struct TitleList_View: View{
     @State var title: [String] = []
-    @State var SearchString: String = ""
-    //検索フィルタ
-    var filteredtitle: [String] {
-        if SearchString.isEmpty {
-            return title
-        } else {
-            return title.filter { $0.localizedCaseInsensitiveContains(SearchString) }
-        }
-    }
+    
     var body: some View {
         List {
-            ForEach(filteredtitle, id: \.self) { title_name in
+            ForEach(title.reversed(), id: \.self) { title_name in
                     Text(title_name)
-                    .font(.title)
-                    .padding()
+                    .font(.title3)
+                    .padding(10)
             }
         }
-        .searchable(text: $SearchString, placement: .navigationBarDrawer(displayMode: .always), prompt: "search keyword")
-        
-        //onAppearは特定のviewが呼び出された直後に実行される
+        .refreshable {
+            do {
+                try await Task.sleep(nanoseconds: 1 * 1000 * 1000 * 1000)
+                try await Server_API_GET()
+                title = Realm_GET()
+            } catch {
+                print(error)
+            }
+        }
         .onAppear {
             title = Realm_GET()
         }

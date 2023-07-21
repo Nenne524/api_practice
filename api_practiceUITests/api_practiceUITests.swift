@@ -26,7 +26,9 @@ final class api_practiceUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
+        
+        let post = app.buttons["投稿"]
+        XCTAssert(post.exists)
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
